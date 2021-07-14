@@ -1,8 +1,9 @@
 # for cycle, else, break, continue
 
+name_list = ['Jim', 'Jack', 'Rickie', 'Mothes', 'Daniels']
+
 # Calculating average name length from the names list
-def aver_name_lenght():
-  name_list = ['Jim', 'Jack', 'Rickie', 'Mothes', 'Daniels']
+def aver_name_lenght(name_list):
   names_l_sum = 0
 
   for name_ in name_list:
@@ -13,4 +14,5 @@ def aver_name_lenght():
   aver_l = names_l_sum / len(name_list)
   print(f"\nAverage name lenght in this list is {aver_l}")
   
-aver_name_lenght()
+
+aver_name_lenght(name_list)
