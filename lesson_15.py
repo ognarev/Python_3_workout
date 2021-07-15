@@ -1,18 +1,18 @@
 # for cycle, else, break, continue
 
 name_list = ['Jim', 'Jack', 'Rickie', 'Mothes', 'Daniels']
-friends_list = [('John', 'Mitchell', None),
-                ('Philip', 'Sadkovsky', 23),
-                ('Anatoliy', 'Bloh', 12),
-                ('Viola', 'Strachey', 19),
-                ('Yoshi', 'Toochke', 27),
-                ('Vasil', 'Semenyuk', 30),
-                ('Jacky', 'Sun', 84),
-                ('Jim', 'Mortison', None),
-                ('Rickie', 'Clacson', 15),
-                ('Mothes', 'Rubenstein', 31)
-                ]
-
+friends_list = [
+  ('John', 'Mitchell', None),
+  ('Philip', 'Sadkovsky', 23),
+  ('Anatoliy', 'Bloh', 12),
+  ('Viola', 'Strachey', 19),
+  ('Yoshi', 'Toochke', 27),
+  ('Vasil', 'Semenyuk', 30),
+  ('Jacky', 'Sun', 84),
+  ('Jim', 'Mortison', None),
+  ('Rickie', 'Clacson', 15),
+  ('Mothes', 'Rubenstein', 31)
+]
 # Manipulations with friends average age
 def friends_info(friends_list):
   aver_age = 20;
@@ -21,10 +21,9 @@ def friends_info(friends_list):
   f_with_age = 0
   
   for friend_ in friends_list:
-    if friend_[2] is None:
-      continue
-    sum_age += int(friend_[2])
-    f_with_age += 1
+    if friend_[2] is not None:
+      sum_age += int(friend_[2])
+      f_with_age += 1 
   aver_age = sum_age / f_with_age
   print(f"Average age in the list is {aver_age} years.\n")
 
