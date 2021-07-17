@@ -107,53 +107,18 @@ def page_rank_like():
     ('f', 'm')
     ]
   def_rank = 1
-  links_list = []
   page_rank_dict = {}
-  page_links_dict = {}
   page_links_dict_02 = {}
 
   # Get all links per page
   for key, value in pairs_list:
     page_links_dict_02.setdefault(key, []).append(value)
-    page_rank_dict.setdefault(key, 1)
+    page_rank_dict.setdefault(key, def_rank)
     page_links_dict_02.setdefault(value, []).append(key)
-    page_rank_dict.setdefault(value, 1)
-  
-  # Calculate PageRank
-  def pr_calc(links_num, cur_pr):
-    DECAY = 1
-    
-    updated_pr = cur_pr/links_num*DECAY
-    return updated_pr
-
-  iter = 0
-  while iter >= 0:  
-    for page_, rank in page_rank_dict.items():
-      link_num = page_links_dict[page_]
-      page_rank_dict[page_] = pr_calc(link_num, rank)
-    iter -= 1
-    
-  # Get unic links list
-  # for link_pairs in pairs_list:
-  #   for page_ in link_pairs:
-  #     links_list.append(page_)
-  # pages_set = set(links_list)
-  
-  # # Set default page rank and number of links
-  # for page_ in pages_set:
-  #   page_rank_dict.setdefault(page_, def_rank)
-  #   page_links_dict.setdefault(page_, 0)
-  
-  # # Get number of links per page
-  # for page_ in pages_set:
-  #   for l in links_list:
-  #     if page_ is l:
-  #       page_links_dict[page_] += 1
+    page_rank_dict.setdefault(value, def_rank)
 
   for page_ in page_links_dict_02:
     print(f"{page_}:{page_rank_dict[page_]}  {page_links_dict_02[page_]}")
-  #print(page_links_dict)
-  #print(links_list)
 
 #names_to_bands()
 #insert_info_in_dict()
