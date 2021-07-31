@@ -113,9 +113,12 @@ def page_rank_like():
   # Get all links per page
   for key, value in pairs_list:
     page_links_dict_02.setdefault(key, []).append(value)
-    page_rank_dict.setdefault(key, def_rank)
     page_links_dict_02.setdefault(value, []).append(key)
+    
+    page_rank_dict.setdefault(key, def_rank)
     page_rank_dict.setdefault(value, def_rank)
+
+  
 
   for page_ in page_links_dict_02:
     print(f"{page_}:{page_rank_dict[page_]}  {page_links_dict_02[page_]}")
