@@ -1,5 +1,7 @@
 # Open, read and write files 
 import os
+import csv
+from typing import DefaultDict
 
 data = [
   ("Buratino", "Strana Durakoff", 10), 
@@ -22,16 +24,17 @@ def csv_interpreter(csv_file):
   list_of_dicts = []
   dict_keys = []
   with open(csv_file, 'r') as fin:
-    for row in fin:
-      #get keys from first row
-      if ~len(list_of_dicts):
-        n = 0
-        while n < len(row):
-          dict_keys.append(row[n])
-          n += 1      
-      #convert all rows to dictionaries
+    csv_reader = csv.DictReader(fin)
+    for row in csv_reader:
+      n = 0
+      pair = []  
+      while n < len(csv_reader.fieldnames):
+        pair.append(f"{csv_reader.fieldnames[n]}:{row[csv_reader.fieldnames[n]]}")
+        if n + 1 < len(csv_reader.fieldnames): pair.append(",")
+        n += 1
+      d = {''.join(pair)}
+      list_of_dicts.append(d)
   return list_of_dicts
 
 #write_to_file(data, r"data/contacts.csv")
-list = csv_interpreter(r"data/contacts.csv")
-print(list)
+print(csv_interpreter(r"data/contacts.csv"))
