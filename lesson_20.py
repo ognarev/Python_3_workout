@@ -6,7 +6,7 @@ a = "\N{GOTHIC LETTER AHSA}"
 b = "x\u00b2"
 c = "\U0001034A"
 
-some_text = "Some bla-bla-bla text. Awesome upside-down. It's just me."
+some_text = "Some \"bla-bla-bla\" text. Awesome upside-down. \"It's just me.\""
 
 # print(f"{name(u'a')} looks like this: {a}")
 # print(f"b looks like this: {b}")
@@ -108,4 +108,20 @@ def upside_down_string(stringin):
             upd_string.insert(0, symb_dict[s])
     return ''.join(upd_string)
 
+def smart_quotes(stringin):
+    "Returns string with smart quotes. Convert quotes to smart quotes."
+    smart_text = []
+    #Check all symbols for quotes
+    fquotes = False
+    for s in stringin:
+        if (s == '"') & fquotes:
+            fquotes = False
+            s = "\N{RIGHT DOUBLE QUOTATION MARK}"
+        elif s == '"':
+            fquotes = True
+            s = "\N{LEFT DOUBLE QUOTATION MARK}"
+        smart_text.append(s)
+    return ''.join(smart_text)
+
 print(f"Correct:\n{some_text}\nUpside-down and reversed:\n{upside_down_string(some_text)}")
+print(f"Smart quotes text:\n{smart_quotes(some_text)}")
