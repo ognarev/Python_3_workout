@@ -6,7 +6,7 @@ a = "\N{GOTHIC LETTER AHSA}"
 b = "x\u00b2"
 c = "\U0001034A"
 
-some_text = "Some \"bla-bla-bla\" text. Awesome upside-down. \"It's just me.\""
+some_text = "Some \"bla-bla-bla\" text8). Awesome upside-down. \"It's just me>)\""
 
 # print(f"{name(u'a')} looks like this: {a}")
 # print(f"b looks like this: {b}")
@@ -124,7 +124,7 @@ def smart_quotes(stringin):
     return ''.join(smart_text)
 
 def smile_converter(stringin):
-    "Returns text with smiles. Convert combinations of symbols to Unicode smiles."
+    "Returns text with smiles. Convert combinations of 2 symbols from smiles_dict to Unicode smiles."
     smiles_dict = {
         ':)': ['😀', 'Grinning Face'],
         ':8': ['😁', 'Grinning Face With Smiling Eyes'],
@@ -140,15 +140,20 @@ def smile_converter(stringin):
     text_with_smiles = []
     #check input text for slices of symbols from smiles dictionary
     n = 0
-    while n <= len(stringin):
-        if stringin[n] == ' ': #check first space in text
-            temp_slice = ''.join(stringin[n + 1] + stringin[n + 2]) #check next 2 symbols after space if they are in smiles dict
-            if temp_slice in smiles_dict: #if true change them to Unicode smile
-                s = smiles_dict[temp_slice[0]]
-                n =+ 3
+    while n < len(stringin):
+        if n < len(stringin) - 2:
+            temp_slice = ''.join(stringin[n] + stringin[n + 1])
+            if temp_slice in smiles_dict:
+                s = smiles_dict[temp_slice][0]
+                n += 1
+            else:
+                s = stringin[n]
+        else:
+            s = stringin[n]
         n += 1
-    #add symbols to text_with_smiles
+        text_with_smiles.append(s)
     return ''.join(text_with_smiles)
 
 print(f"Correct:\n{some_text}\nUpside-down and reversed:\n{upside_down_string(some_text)}")
-print(f"Smart quotes text:\n{smart_quotes(some_text)}")
+b = f"Smart quotes text:\n{smart_quotes(some_text)}"
+print(smile_converter(b))
