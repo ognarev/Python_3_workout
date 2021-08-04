@@ -123,5 +123,32 @@ def smart_quotes(stringin):
         smart_text.append(s)
     return ''.join(smart_text)
 
+def smile_converter(stringin):
+    "Returns text with smiles. Convert combinations of symbols to Unicode smiles."
+    smiles_dict = {
+        ':)': ['😀', 'Grinning Face'],
+        ':8': ['😁', 'Grinning Face With Smiling Eyes'],
+        '3)': ['😂', 'Face With Tears of Joy'],
+        '8)': ['😃', 'Smiling Face With Open Mouth'],
+        '7)': ['😄', 'Smiling Face With Open Mouth and Smiling Eyes'],
+        '1)': ['😅', 'Smiling Face With Open Mouth and Cold Sweat'],
+        '3)': ['😆', 'Smiling Face With Open Mouth and Tightly-Closed Eyes'],
+        '0)': ['😇', 'Smiling Face With Halo'],
+        '>)': ['😈', 'Smiling Face With Horns'],
+        ';)': ['😉', 'Winking Face']        
+    }
+    text_with_smiles = []
+    #check input text for slices of symbols from smiles dictionary
+    n = 0
+    while n <= len(stringin):
+        if stringin[n] == ' ': #check first space in text
+            temp_slice = ''.join(stringin[n + 1] + stringin[n + 2]) #check next 2 symbols after space if they are in smiles dict
+            if temp_slice in smiles_dict: #if true change them to Unicode smile
+                s = smiles_dict[temp_slice[0]]
+                n =+ 3
+        n += 1
+    #add symbols to text_with_smiles
+    return ''.join(text_with_smiles)
+
 print(f"Correct:\n{some_text}\nUpside-down and reversed:\n{upside_down_string(some_text)}")
 print(f"Smart quotes text:\n{smart_quotes(some_text)}")
