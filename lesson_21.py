@@ -21,7 +21,7 @@ class TwitSimulator():
     def delete(self):
         pass
 
-class CatClass():
+class CatC():
     "My first cat class."
     #what my cat has
     legs_max = 4
@@ -30,7 +30,7 @@ class CatClass():
     states = ['sleeping', 'eating', 'walking', 'running', 'jumping', 'brawling']
     moods = ['happy', 'angry', 'sleepy', 'tired', 'hungry', 'joyfull', 'creepy']
     
-    def __init__(self, nickname):
+    def __init__(self, nickname='wild'):
         self.nickname = nickname
         self.legs = self.legs_max
         self.tail = self.tail_max
@@ -40,8 +40,8 @@ class CatClass():
 
     #what my cat can do
     def get_info(self):
-        if self.nickname: print(f"This cat nickname is {self.nickname}.")
-        else: print(f"This cat has no nickname, it's wild cat.")
+        if self.nickname == 'wild': print(f"This cat has no nickname, it's wild cat.")
+        else: print(f"This cat nickname is {self.nickname}.")
         print(f"It has {self.color} fur color. {self.legs} legs and {self.tail} tail")
 
     def do_murmur(self):
@@ -63,8 +63,8 @@ class CatClass():
         self.state == random.choice(self.states)
         print(f"The cat is {self.state} now.")
 
-cat = CatClass("Rosalinda")
-cat.get_info()
-cat.do_murmur()
-#cat.do_sleep()
-cat.change_state()
+# cat = CatC("Rosalinda")
+# cat.get_info()
+# cat.do_murmur()
+# cat.do_sleep()
+# cat.change_state()
