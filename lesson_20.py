@@ -125,6 +125,7 @@ def smart_quotes(stringin):
 
 def smile_converter(stringin):
     "Returns text with smiles. Convert combinations of 2 symbols from smiles_dict to Unicode smiles."
+    # a lot of smiles with Unicode codes here https://gist.github.com/endolith/157796
     smiles_dict = {
         ':)': ['😀', 'Grinning Face'],
         ':8': ['😁', 'Grinning Face With Smiling Eyes'],
