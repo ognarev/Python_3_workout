@@ -1,6 +1,7 @@
 # Subclasses, parent classes. Make tigers from cats :)
 
 import lesson_21 as cats
+import random
 
 class PredatorCatC(cats.CatC):
     "This cats are aggressive and they have predators attributes."
